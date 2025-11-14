@@ -32,4 +32,27 @@ def log_in_user():
             return valid_hash(user_password, hash)
     return False
 
-print(log_in_user())
+def menu():
+    print('*'*30)
+    print('Welcome to my system')
+    print('Choose from the following options: ')
+    print('1. Register ')
+    print('2. Login')
+    print('3. Exit')
+
+def main():
+    while True:
+        menu()
+        choice = input('> ')
+        if choice == '1':
+            register_user()
+        elif choice == '2':
+            if log_in_user():
+                print('You loged in !!')
+            else:
+                print('Incorrect log in !!!')
+        elif choice == '3':
+            print('Good Bye !!')
+            break
+if __name__ == '__main__':
+    main()
