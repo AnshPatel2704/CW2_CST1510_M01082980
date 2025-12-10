@@ -21,23 +21,3 @@ def main():
         elif choice == '3':
             print('Good Bye !!')
             break
-if __name__ == '__main__':
-    main()
-
-
-
-import sqlite3
-
-conn = sqlite3.connect('Data/telligence_platform.db')
-
-curr = conn.cursor()
-
-sql = ("""CREATE TABLE IF NOT EXISTS users (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,  
-    username TEXT NOT NULL UNIQUE,
-    password_hash TEXT NOT NULL
-       )""")
-
-curr.execute(sql)
-conn.commit()
-conn.close()
