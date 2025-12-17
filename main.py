@@ -1,4 +1,5 @@
 import bcrypt
+import sqlite3
 
 # hashed using bcrypt
 def generate_hash(psw):
@@ -62,6 +63,19 @@ def main():
             break
 
 
-if __name__ == '__main__':
-    main()
+# create db insert, delete, update
+conn = sqlite3.connect('DATA/project_data.db')
+cur = conn.cursor()
+
+sql = '''CREATE TABLE users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT NOT NULL UNIQUE,
+    password_hash TEXT NOT NULL);
+'''
+
+cur.execute(sql)
+conn.commit()
+
+conn.close()
+
 
